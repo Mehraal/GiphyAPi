@@ -2,12 +2,21 @@ body {
     background-color: grey;
 }
 #buttons {
-    color: blue;
-    margin-top: 20px;
+    margin-top: 30px;
+    margin-bottom: 80px;
+    margin-left: 20px;
+
 }
 #sport-form {
     float: right;
     margin-top: 200px;
     margin-right: 40px;
+
     
+}
+#sport-input {
+    width: 400px;
+}
+#add-sport {
+    color: blue;
 }

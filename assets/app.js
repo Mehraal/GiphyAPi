@@ -29,5 +29,20 @@ $("button").on("click", function () {
 
                 $("#gifs-appear-here").prepend(gifDiv);
             }
+            $("#add-sport").on("click", function (event) {
+                event.preventDefault();
+
+                var movie = $("#sport-input").val().trim();
+
+                sport.push(sport);
+
+                renderButtons();
+            });
+
+
+            $(document).on("click", ".sport-btn", displaysportInfo);
+
+
+            renderButtons();
         });
 });
