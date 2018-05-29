@@ -1,3 +1,13 @@
+body {
+    background-color: grey;
+}
 #buttons {
-    background-color: blue;
+    color: blue;
+    margin-top: 20px;
+}
+#sport-form {
+    float: right;
+    margin-top: 200px;
+    margin-right: 40px;
+    
 }
