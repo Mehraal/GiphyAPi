@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Giphy API</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="./assets/style.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+
+<head>
+  <meta charset="utf-8">
+  <title>Quoth the Giphy</title>
+</head>
+
+<body>
+  <div id="sport-view"></div>
+  <div id="buttons-view"></div>
+  
+  <form id="sport-form">
+    <label for="sport-input">Add a sport</label>
+    <input type="text" id="sport-input">
+    <br>
+  
+    <input id="add-sport" type="submit" value="Add a sport">
+  </form>
+  <div id="buttons">
+    <button data-sport="Tennis">
+      Tennis
+    </button>
+    <button data-sport="Golf">
+      Golf
+    </button>
+    <button data-sport="Soccer">
+      Soccer
+    </button>
+    <button data-sport="Basketball">
+      Basketball
+    </button>
+    <button data-Sport="Football">
+      Football
+    </button>
+    <button data-sport="Baseball">
+      Baseball
+    </button>
+    <button data-sport="Swimming">
+      Swimming
+    </button>
+    <button data-sport="Rugby">
+      Rugby
+    </button>
+    <button data-sport="Wrestling">
+      Wrestling
+    </button>
+    <button data-sport="Chess">
+      Chess
+    </button>
+    <button data-sport="Archery">
+      Archery
+    </button>
+    <button data-sport="Running">
+      Running
+    </button>
+    <button data-sport="Bodybuilding">
+      Bodybuilding
+    </button>
+    <button data-sport="Karate">
+      Karate
+    </button>
+    <button data-sport="Vollyball">
+      Volleyball
+    </button>
+
+    
+  </div>
+
+  <div id="gifs-appear-here">
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    $("button").on("click", function() {
+      var sport = $(this).attr("data-sport");
+      var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+        sport + "&api_key=dc6zaTOxFJmzC&limit=10";
+    // $("#find-sport").on("click", function (event) {
+    //     event.preventDefault();
+    //   var sport = $("#sport-input").val();
+            
+
+      $.ajax({
+        url: queryURL,
+        method: "GET"
+      })
+        .then(function(response) {
+          var results = response.data;
+
+          for (var i = 0; i < results.length; i++) {
+            var gifDiv = $("<div class='item'>");
+
+            var rating = results[i].rating;
+
+            var p = $("<p>").text("Rating: " + rating);
+
+            var sportImage = $("<img>");
+            sportImage.attr("src", results[i].images.fixed_height.url);
+
+            gifDiv.prepend(p);
+            gifDiv.prepend(sportImage);
+
+            $("#gifs-appear-here").prepend(gifDiv);
+          }
+          
+          
+        });
+        
+    });
+  </script>
+</body>
+
+</html>
