@@ -28,7 +28,7 @@
   
     <input id="add-sport" type="submit" value="Submit">
   </form>
-  <div id="buttons">
+  <div class="buttons">
     <button data-sport="Tennis">
       Tennis
     </button>
@@ -90,6 +90,7 @@
     // $("#find-sport").on("click", function (event) {
     //     event.preventDefault();
     //   var sport = $("#sport-input").val();
+
             
 
       $.ajax({
@@ -114,11 +115,30 @@
 
             $("#gifs-appear-here").prepend(gifDiv);
           }
+           function renderButtons() {
+
+            
+            $("#buttons-view").empty();
+            
+            for (var i = 0; i < sport.length; i++) {
+
+             
+              var a = $("<button>");
+              
+              a.addClass("sport-btn");
+              
+              a.attr("data-name", sport[i]);
+              
+              a.text(sport[i]);
+            
+              $("#buttons-view").append(a);
+            }
+          }
           
-          $("#add-sport").on("click", function (event) {
+          $("#add-sport").on("click", function(event) {
             event.preventDefault();
            
-            var movie = $("#sport-input").val().trim();
+            var sport = $("#sport-input").val().trim();
 
             sport.push(sport);
 
